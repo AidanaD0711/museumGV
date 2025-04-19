@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GeoVision — Виртуальный музей ГИС и ДЗЗ</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+    header {
+      background: linear-gradient(to right, #003366, #006699);
+      color: white;
+      padding: 2em;
+      text-align: center;
+    }
+    section {
+      padding: 2em;
+      max-width: 900px;
+      margin: auto;
+    }
+    .hall {
+      margin: 2em 0;
+      background: white;
+      border-radius: 12px;
+      padding: 1.5em;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    .hall:hover {
+      transform: translateY(-5px);
+    }
+    .hall h2 {
+      margin-top: 0;
+      color: #003366;
+    }
+    .hall img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin-top: 1em;
+    }
+    .hall button {
+      margin-top: 1em;
+      padding: 0.5em 1em;
+      background-color: #006699;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .hall button:hover {
+      background-color: #004d66;
+    }
+    footer {
+      background-color: #003366;
+      color: white;
+      text-align: center;
+      padding: 1em;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .modal-content {
+      background: white;
+      padding: 2em;
+      border-radius: 12px;
+      max-width: 600px;
+    }
+    .modal-content h3 {
+      margin-top: 0;
+    }
+    .close {
+      float: right;
+      font-size: 1.2em;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>GeoVision</h1>
+    <p>Виртуальный музей ГИС и ДЗЗ</p>
+    <p><strong>Автор: Айдана, PhD, гидролог и инженер</strong></p>
+  </header>
+
+  <section>
+    <h2>Добро пожаловать в музей GeoVision!</h2>
+    <p>Исследуйте мир дистанционного зондирования Земли и геоинформационных систем. Пройдитесь по залам, в которых наука становится визуальной и понятной.</p>
+
+    <div class="hall">
+      <h2>Зал 1: Лобби — Начало координат</h2>
+      <p>Что такое ДЗЗ и ГИС? Здесь начинается ваше путешествие в цифровое понимание планеты.</p>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Global_land_surface_temperature.jpg/800px-Global_land_surface_temperature.jpg" alt="Лобби">
+      <button onclick="openModal('modal1')">Открыть зал</button>
+    </div>
+
+    <div class="hall">
+      <h2>Зал 2: Глаз со спутника</h2>
+      <p>Спутники, дроны, аэрофото — откуда приходят данные и как они меняют картину мира.</p>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Landsat_image_of_Lake_Tahoe.jpg/800px-Landsat_image_of_Lake_Tahoe.jpg" alt="Спутник">
+      <button onclick="openModal('modal2')">Открыть зал</button>
+    </div>
+
+    <div class="hall">
+      <h2>Зал 3: Цифровая алхимия</h2>
+      <p>Как обрабатывают снимки, чтобы они стали инструментом анализа и принятия решений.</p>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Landsat_classification_example.png/800px-Landsat_classification_example.png" alt="Классификация">
+      <button onclick="openModal('modal3')">Открыть зал</button>
+    </div>
+
+    <div class="hall">
+      <h2>Зал 4: Интеграция — Миры сходятся</h2>
+      <p>Соединение изображений с пространственными данными в ГИС для создания мощных решений.</p>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Forest_cover_map_from_MODIS_and_Landsat_data.png/800px-Forest_cover_map_from_MODIS_and_Landsat_data.png" alt="Интеграция">
+      <button onclick="openModal('modal4')">Открыть зал</button>
+    </div>
+
+    <div class="hall">
+      <h2>Зал 5: Жизнь после интеграции</h2>
+      <p>Примеры применения интеграции: мониторинг, экология, градостроительство и безопасность.</p>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Sentinel-2_image_showing_flooding_in_Pakistan_2022.png/800px-Sentinel-2_image_showing_flooding_in_Pakistan_2022.png" alt="Применение">
+      <button onclick="openModal('modal5')">Открыть зал</button>
+    </div>
+
+    <div class="hall">
+      <h2>Зал 6: Стань частью команды</h2>
+      <p>Интерактив — попробуй сам проанализировать данные и почувствуй себя специалистом по ДЗЗ и ГИС.</p>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Interactive_GIS_Map.jpg/800px-Interactive_GIS_Map.jpg" alt="Интерактив">
+      <button onclick="openModal('modal6')">Открыть зал</button>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 GeoVision — виртуальный музей от Айданы, PhD</p>
+  </footer>
+
+  <!-- Модальные окна -->
+  <div id="modal1" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal1')">&times;</span><h3>Зал 1: Лобби</h3><p>Добро пожаловать в мир ГИС и ДЗЗ. Здесь вы узнаете, как космические технологии помогают решать земные задачи.</p></div></div>
+  <div id="modal2" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal2')">&times;</span><h3>Зал 2: Глаз со спутника</h3><p>Источники данных: спутники, дроны, аэрофотосъёмка. Разные подходы — единая цель: точное знание о Земле.</p></div></div>
+  <div id="modal3" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal3')">&times;</span><h3>Зал 3: Цифровая алхимия</h3><p>Обработка данных: геометрическая коррекция, фильтрация, классификация. Как создать пригодный для анализа материал.</p></div></div>
+  <div id="modal4" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal4')">&times;</span><h3>Зал 4: Интеграция</h3><p>Интеграция данных ДЗЗ в ГИС: от наложения слоёв до пространственного анализа и картографирования.</p></div></div>
+  <div id="modal5" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal5')">&times;</span><h3>Зал 5: Применение</h3><p>Примеры из практики: паводковая безопасность, урбанистика, мониторинг лесов и ледников.</p></div></div>
+  <div id="modal6" class="modal"><div class="modal-content"><span class="close" onclick="closeModal('modal6')">&times;</span><h3>Зал 6: Стань частью команды</h3><p>Пройди мини-задание: выбери правильный спутниковый снимок, наложи слои и сделай вывод — как настоящий аналитик!</p></div></div>
+
+  <script>
+    function openModal(id) {
+      document.getElementById(id).style.display = 'flex';
+    }
+    function closeModal(id) {
+      document.getElementById(id).style.display = 'none';
+    }
+  </script>
+</body>
+</html>
